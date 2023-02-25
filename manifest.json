@@ -1,0 +1,27 @@
+{
+    "$schema": "https://json.schemastore.org/chrome-manifest",
+
+    "manifest_version": 3,
+    "name": "Cookie downloader",
+    "description": "Simple cookie downloader action button",
+    "version": "0.1",
+
+    "permissions": [
+        "activeTab",
+        "cookies",
+        "downloads",
+        "scripting"
+    ],
+    "host_permissions": [
+        "*://*/*"
+    ],
+
+    "action": {
+        "default_icon": {
+
+        }
+    },
+    "background": {
+        "service_worker": "dist/background.js"
+    }
+}
