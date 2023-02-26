@@ -18,7 +18,7 @@
 
     "action": {
         "default_icon": {
-
+            "32": "images/cookie32.png"
         }
     },
     "background": {
