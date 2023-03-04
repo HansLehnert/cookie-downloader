@@ -5,13 +5,21 @@ chrome.action.onClicked.addListener(
             return;
         }
 
-        const cookies = await chrome.cookies.getAll({url: tab.url});
+        let cookies = await chrome.cookies.getAll({url: tab.url});
 
-        // await chrome.downloads.download(
-        //     {"conflictAction": "overwrite",
-        //         "filename": "cookies.txt"
-        //     }
-        // );
+        cookies.push({
+            domain: "__meta",
+            hostOnly: true,
+            path: "/",
+            secure: false,
+            expirationDate: 0,
+            name: "user_agent",
+            value: navigator.userAgent,
+            storeId: "",
+            session: false,
+            httpOnly: false,
+            sameSite: "unspecified",
+        });
 
         let formatted_cookies: string = "# HTTP Cookie File\n";
         for (let cookie of cookies) {
@@ -29,9 +37,12 @@ chrome.action.onClicked.addListener(
 
         const data_url = "data:text/plain;base64," + btoa(formatted_cookies);
 
+        const domain_name = new URL(tab.url).hostname.split('.').at(-2);
+        const filename = domain_name + "_cookies.txt";
+
         await chrome.downloads.download({
             url: data_url,
-            filename: "cookies.txt",
+            filename: filename,
             conflictAction: "overwrite",
         })
     }

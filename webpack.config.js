@@ -4,6 +4,7 @@ module.exports = {
     entry: {
         background: "./src/background.ts",
     },
+    mode: "production",
     module: {
         rules: [
             {
