@@ -3,6 +3,7 @@ const path = require("path");
 module.exports = {
     entry: {
         background: "./src/background.ts",
+        content_script: "./src/content_script.ts",
     },
     mode: "production",
     module: {
