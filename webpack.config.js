@@ -17,6 +17,9 @@ module.exports = {
     },
     resolve: {
         extensions: [".d.ts", ".tsx", ".ts", ".js"],
+        fallback: {
+            buffer: require.resolve("buffer/"),
+        }
     },
     output: {
         filename: "[name].js",
