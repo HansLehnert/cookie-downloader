@@ -10,7 +10,8 @@
         "activeTab",
         "cookies",
         "downloads",
-        "scripting"
+        "scripting",
+        "webRequest"
     ],
     "host_permissions": [
         "*://*/*"
@@ -22,7 +23,8 @@
         }
     },
     "background": {
-        "service_worker": "dist/background.js"
+        "service_worker": "dist/background.js",
+        "scripts": ["dist/background.js"]
     },
     "content_scripts": [
         {

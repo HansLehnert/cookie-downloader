@@ -57,16 +57,17 @@ chrome.action.onClicked.addListener(
             formatted_cookies += cookie_values.join("\t") + "\n";
         }
 
-        const encoded_data = Buffer.from(formatted_cookies).toString('base64');
-        const data_url = "data:text/plain;base64," + encoded_data;
+        const data_url = URL.createObjectURL(
+            new Blob([formatted_cookies], {type: 'text/plain'}));
 
         const domain_name = new URL(tab.url).hostname.split('.').at(-2);
         const filename = domain_name + "_cookies.txt";
+        console.log(data_url);
 
-        await chrome.downloads.download({
+        await browser.downloads.download({
             url: data_url,
             filename: filename,
             conflictAction: "overwrite",
-        })
+        });
     }
 )
