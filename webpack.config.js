@@ -1,4 +1,5 @@
 const path = require("path");
+var CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -25,4 +26,11 @@ module.exports = {
         filename: "[name].js",
         path: path.resolve(__dirname, 'dist'),
     },
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {from: "manifest.json"},
+                {from: "images", to: "images"},
+        ]}),
+    ]
 }

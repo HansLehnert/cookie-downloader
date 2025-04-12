@@ -62,7 +62,6 @@ chrome.action.onClicked.addListener(
 
         const domain_name = new URL(tab.url).hostname.split('.').at(-2);
         const filename = domain_name + "_cookies.txt";
-        console.log(data_url);
 
         await browser.downloads.download({
             url: data_url,

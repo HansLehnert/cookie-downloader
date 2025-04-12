@@ -23,13 +23,18 @@
         }
     },
     "background": {
-        "service_worker": "dist/background.js",
-        "scripts": ["dist/background.js"]
+        "service_worker": "background.js",
+        "scripts": ["background.js"]
     },
     "content_scripts": [
         {
             "matches": ["*://*/*"],
-            "js": ["dist/content_script.js"]
+            "js": ["content_script.js"]
         }
-    ]
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "cookie_downloader@something.com"
+        }
+    }
 }
