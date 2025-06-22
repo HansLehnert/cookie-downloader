@@ -40,7 +40,7 @@ chrome.action.onClicked.addListener(
             });
         }
 
-        addMetaCookie("__meta", navigator.userAgent);
+        addMetaCookie("__user_agent", navigator.userAgent);
         addMetaCookie("__localstorage", await getLocalStorageData(tab.id!));
 
         let formatted_cookies: string = "# HTTP Cookie File\n";
